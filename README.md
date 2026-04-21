@@ -21,7 +21,7 @@ This repository leverages state-of-the-art YOLOv12 models wrapped in an interact
     * Detects vehicle license plates with high accuracy.
     * Automatically extracts and crops the plate region for downstream OCR processing.
 * **💻 Interactive Web UI:** Built with Gradio to provide an intuitive, drag-and-drop interface for users to test images instantly.
-* **⚙️ Optimized Inference:** Utilizes OpenCV and Numpy for efficient bounding box rendering and array slicing.
+* **⚙️ Optimized Inference:** Utilizes OpenCV and NumPy for efficient bounding box rendering and array slicing.
 
 ---
 
@@ -43,10 +43,11 @@ The project is structured into modular components separating the UI, inference l
 To get this project running locally, it is recommended to use a fast virtual environment manager like `uv` or standard `pip`.
 
 **1. Clone the repository**
+
 ```bash
-git clone [https://github.com/yourusername/your-repo-name.git](https://github.com/yourusername/your-repo-name.git)
+git clone https://github.com/yourusername/your-repo-name.git
 cd your-repo-name
-````
+```
 
 **2. Set up the environment**
 
@@ -67,16 +68,17 @@ pip install ultralytics gradio opencv-python-headless pillow numpy
 ```
 
 **4. Ensure your model weights are in place**
+
 Make sure `best_glass.pt` and `best_license.pt` are located in the appropriate directory as referenced in `detection.py`.
 
------
+---
 
 ## 🎮 Usage
 
 You can launch either of the detection systems independently based on the task you want to test.
 
-\<details\>
-\<summary\>\<b\>🔍 Launch the Glass Defect Detection System\</b\>\</summary\>
+<details>
+<summary><b>🔍 Launch the Glass Defect Detection System</b></summary>
 
 Run the following command to start the industrial QA interface:
 
@@ -84,12 +86,12 @@ Run the following command to start the industrial QA interface:
 python main_glass.py
 ```
 
-*Open the provided local URL (usually `http://127.0.0.1:7860`) in your browser. Upload an image of a glass product to see the bounding boxes and inspection status.*
+Open the provided local URL (usually `http://127.0.0.1:7860`) in your browser. Upload an image of a glass product to see the bounding boxes and inspection status.
 
-\</details\>
+</details>
 
-\<details\>
-\<summary\>\<b\>🚙 Launch the License Plate Detection System\</b\>\</summary\>
+<details>
+<summary><b>🚙 Launch the License Plate Detection System</b></summary>
 
 Run the following command to start the ALPR interface:
 
@@ -97,20 +99,20 @@ Run the following command to start the ALPR interface:
 python main_plate.py
 ```
 
-*Upload a car image. The system will output the full annotated image alongside a cropped version of the license plate.*
+Upload a car image. The system will output the full annotated image alongside a cropped version of the license plate.
 
-\</details\>
+</details>
 
------
+---
 
 ## 🧠 Model Training Details
 
-The models were trained using the `ultralytics` framework. The training script (`train.py`) demonstrates custom configurations to optimize the model:
+The models were trained using the `ultralytics` framework. The training script (`train.py`) demonstrates custom configurations to optimize the models:
 
-  * **Base Model:** `yolov12n.pt` (Nano architecture for fast inference speed)
-  * **Image Size:** 640x640
-  * **Batch Size:** 16
-  * **Epochs:** 20 (with an early stopping patience of 5 to prevent overfitting)
-  * **Augmentation:** Vertical flipping (`flipud=0.5`) utilized to improve generalization.
+* **Base Model:** `yolov12n.pt` (Nano architecture for fast inference speed)
+* **Image Size:** 640×640
+* **Batch Size:** 16
+* **Epochs:** 20 (with early stopping patience of 5 to prevent overfitting)
+* **Augmentation:** Vertical flipping (`flipud=0.5`) utilized to improve generalization
 
------
+---
