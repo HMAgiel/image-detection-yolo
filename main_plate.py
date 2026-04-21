@@ -4,7 +4,7 @@ from detection import detect_license
 with gr.Blocks() as demo:
     gr.Markdown("# License Plate Detection System")
     gr.Markdown("## Detect a license plate from the car.")
-    gr.Markdown("Upload an image of a glass product to detect any license.")
+    gr.Markdown("Upload an image of a plate product to detect any license.")
 
     with gr.Row():
         with gr.Column():
