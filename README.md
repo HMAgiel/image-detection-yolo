@@ -1,4 +1,3 @@
-````markdown
 # 👁️ Dual-Task Vision System: Quality Assurance & Plate Recognition
 
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python&logoColor=white)]()
