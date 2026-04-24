@@ -13,12 +13,13 @@ with gr.Blocks() as demo:
         with gr.Column():
             output_image = gr.Image(type="pil", label="Detection result...")
             croped_image = gr.Image(type="pil", label="cropped plate")
+            ocr_result = gr.Textbox(label="Plate", lines=4)
             status_box = gr.HTML(label="Status message")
 
     predict_btn.click(
         fn=detect_license,
         inputs=input_image,
-        outputs=[output_image, croped_image, status_box]
+        outputs=[output_image, croped_image, ocr_result, status_box]
     )
 
 demo.launch()

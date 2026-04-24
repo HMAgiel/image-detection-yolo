@@ -1,6 +1,7 @@
 from ultralytics import YOLO
 from collections import Counter
 from PIL import Image
+import easyocr
 import cv2
 import numpy as np
 
@@ -71,6 +72,10 @@ def detect_license(image):
             if cropped_plate is None: 
                 # Crop menggunakan Numpy Slicing: [y_awal:y_akhir, x_awal:x_akhir]
                 cropped = image_np[y1:y2, x1:x2]
+                reader = easyocr.Reader(['en'])
+                result_ocr = reader.readtext(cropped)
+                for (bbox, text, prob) in result_ocr:
+                  hasil_ocr = text
                 
         # Tentukan warna kotak (Hijau untuk plate, Biru/Merah untuk lainnya)
         color = (0, 255, 0) if label == "plate" else (255, 0, 0) 
@@ -93,4 +98,4 @@ def detect_license(image):
         )
         
     # Kembalikan: Gambar Full berr-annotasi, Gambar Plat Hasil Crop, Status HTML
-    return Image.fromarray(annotated_img), Image.fromarray(cropped), status_html
+    return Image.fromarray(annotated_img), Image.fromarray(cropped), hasil_ocr, status_html
